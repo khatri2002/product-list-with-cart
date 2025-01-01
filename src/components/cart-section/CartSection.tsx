@@ -31,26 +31,30 @@ const CartSection = ({ cart, handleSetCart }: CartSectionProps) => {
           <div className={styles.fillState}>
             <ul className={styles.itemsContainer}>
               {cart.map((item, index) => (
-                <li key={index} className={styles.item}>
-                  <div className={styles.content}>
-                    <span className={styles.title}>{item.name}</span>
-                    <div className={styles.bottomTextContainer}>
-                      <span className={styles.quantity}>{item.quantity}x</span>
-                      <span className={styles.priceSub}>
-                        @ &#36;{item.price.toFixed(2)}
-                      </span>
-                      <span className={styles.priceMain}>
-                        &#36;{itemPrice(item.quantity, item.price)}
-                      </span>
+                <li key={index} className={styles.itemWrapper}>
+                  <div className={styles.item}>
+                    <div className={styles.content}>
+                      <span className={styles.title}>{item.name}</span>
+                      <div className={styles.bottomTextContainer}>
+                        <span className={styles.quantity}>
+                          {item.quantity}x
+                        </span>
+                        <span className={styles.priceSub}>
+                          @ &#36;{item.price.toFixed(2)}
+                        </span>
+                        <span className={styles.priceMain}>
+                          &#36;{itemPrice(item.quantity, item.price)}
+                        </span>
+                      </div>
                     </div>
+                    <button
+                      type="button"
+                      className={styles.cancelBtn}
+                      onClick={() => removeItem(item.name)}
+                    >
+                      <i className="fa-solid fa-x"></i>
+                    </button>
                   </div>
-                  <button
-                    type="button"
-                    className={styles.cancelBtn}
-                    onClick={() => removeItem(item.name)}
-                  >
-                    <i className="fa-solid fa-x"></i>
-                  </button>
                 </li>
               ))}
             </ul>
