@@ -15,7 +15,7 @@ const DessertsSection = ({ cart, handleSetCart }: DessertsSectionProps) => {
     ]);
   };
 
-  const IsItemInCart = (name: string) =>
+  const isItemInCart = (name: string) =>
     cart.some((item) => item.name === name);
 
   const itemQuantity = (name: string) => {
@@ -46,40 +46,40 @@ const DessertsSection = ({ cart, handleSetCart }: DessertsSectionProps) => {
       <h1 className={styles.heroTitle}>Desserts</h1>
       <div className={styles.dessertsContainer}>
         {items.map((item, index) => (
-          <div key={index} className={styles.card}>
+          <div
+            key={index}
+            className={classNames({
+              [styles.card]: true,
+              [styles.active]: isItemInCart(item.name),
+            })}
+          >
             <div className={styles.header}>
-              <img
-                className={styles.desktop}
-                src={item.image.desktop}
-                alt={item.name}
-              />
-              <img
-                className={styles.tablet}
-                src={item.image.tablet}
-                alt={item.name}
-              />
-              <img
-                className={styles.mobile}
-                src={item.image.mobile}
-                alt={item.name}
-              />
+              <div className={styles.imgWrapper}>
+                <img
+                  className={styles.desktop}
+                  src={item.image.desktop}
+                  alt={item.name}
+                />
+                <img
+                  className={styles.tablet}
+                  src={item.image.tablet}
+                  alt={item.name}
+                />
+                <img
+                  className={styles.mobile}
+                  src={item.image.mobile}
+                  alt={item.name}
+                />
+              </div>
               <button
-                className={classNames({
-                  [styles.addToCartBtn]: true,
-                  [styles.hide]: IsItemInCart(item.name),
-                })}
+                className={styles.addToCartBtn}
                 onClick={() => handleAddToCart(item.name)}
                 type="button"
               >
                 <img src={IconAddToCart} alt="icon-add-to-cart" />
                 Add to Cart
               </button>
-              <div
-                className={classNames({
-                  [styles.selected]: true,
-                  [styles.show]: IsItemInCart(item.name),
-                })}
-              >
+              <div className={styles.selected}>
                 <button
                   type="button"
                   onClick={() => decremenetQuantity(item.name)}

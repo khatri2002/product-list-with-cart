@@ -12,25 +12,31 @@
       .header {
         @apply relative;
 
-        img.desktop {
-          @apply rounded-md;
-        }
+        .imgWrapper {
+          @apply overflow-hidden rounded-md border-2 border-transparent transition duration-300;
 
-        img.tablet {
-          @apply hidden;
-        }
+          img.desktop,
+          img.tablet,
+          img.mobile {
+            @apply rounded-md transition duration-300;
+          }
 
-        img.mobile {
-          @apply hidden;
+          img.desktop {
+            @apply block;
+          }
+
+          img.tablet {
+            @apply hidden;
+          }
+
+          img.mobile {
+            @apply hidden;
+          }
         }
 
         .addToCartBtn {
           @apply border-red hover:text-red visible absolute -bottom-5 left-0 right-0 mx-auto flex h-10 items-center justify-center gap-x-2 rounded-full border bg-white text-sm font-medium text-rose-900 opacity-100 transition-all duration-300;
           width: 65%;
-
-          &.hide {
-            @apply invisible bottom-5 opacity-0;
-          }
         }
 
         .selected {
@@ -63,10 +69,6 @@
           span {
             @apply font-medium text-white;
           }
-
-          &.show {
-            @apply visible -bottom-5 opacity-100;
-          }
         }
       }
 
@@ -83,6 +85,29 @@
 
         .price {
           @apply text-red font-semibold;
+        }
+      }
+
+      &.active {
+        .header {
+          .addToCartBtn {
+            // hide
+            @apply invisible bottom-5 opacity-0;
+          }
+
+          .selected {
+            // show
+            @apply visible -bottom-5 opacity-100;
+          }
+
+          .imgWrapper {
+            @apply border-red;
+            img.desktop,
+            img.tablet,
+            img.mobile {
+              @apply scale-110;
+            }
+          }
         }
       }
     }
