@@ -1,4 +1,5 @@
 import IconAddToCart from "./icon-add-to-cart.svg";
+import IconCarbonNeutral from "./icon-carbon-neutral.svg";
 
 import ImageWaffleDesktop from "./image-waffle-desktop.jpg";
 import ImageWaffleMobile from "./image-waffle-mobile.jpg";
@@ -47,6 +48,7 @@ import ImagePannaCottaThumbnail from "./image-panna-cotta-thumbnail.jpg";
 
 export {
   IconAddToCart,
+  IconCarbonNeutral,
   ImageWaffleDesktop,
   ImageWaffleMobile,
   ImageWaffleTablet,

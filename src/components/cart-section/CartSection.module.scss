@@ -1,3 +1,112 @@
 .container {
-  width: 35%;
+  width: 30%;
+
+  .box {
+    @apply sticky top-5 rounded-lg bg-white p-5;
+
+    .heroTitle {
+      @apply text-red text-2xl font-semibold;
+    }
+
+    .itemsContainer {
+      @apply mt-6;
+
+      .item {
+        @apply relative flex items-center justify-between py-5;
+
+        .content {
+          .title {
+            @apply text-sm font-medium text-rose-900;
+          }
+
+          .bottomTextContainer {
+            @apply mt-1 flex items-center gap-x-3 text-sm;
+
+            .quantity {
+              @apply text-red w-7 font-semibold;
+            }
+
+            .priceSub {
+              @apply text-rose-300;
+            }
+
+            .priceMain {
+              @apply font-medium text-rose-500;
+            }
+          }
+        }
+
+        .cancelBtn {
+          @apply flex h-5 w-5 items-center justify-center rounded-full border border-rose-400 transition duration-300;
+
+          i {
+            @apply text-rose-400 transition duration-300;
+            font-size: 0.7rem;
+          }
+
+          &:hover {
+            @apply border-rose-900 shadow;
+
+            i {
+              @apply text-rose-900;
+            }
+          }
+        }
+
+        &:first-child {
+          @apply pt-0;
+        }
+
+        &:before {
+          @apply absolute bottom-0 w-full bg-rose-100;
+          content: "";
+          height: 1px;
+        }
+      }
+    }
+
+    .orderContainer {
+      @apply my-7 flex items-center justify-between;
+
+      .field {
+        @apply text-sm font-medium text-rose-500;
+      }
+
+      .value {
+        @apply text-xl font-bold text-rose-900;
+      }
+    }
+
+    .badge {
+      @apply flex items-center justify-center gap-x-2 rounded-md bg-rose-50 py-3;
+
+      .text {
+        @apply text-sm text-rose-900;
+
+        .active {
+          @apply font-semibold;
+        }
+      }
+    }
+
+    .btn {
+      @apply bg-red relative mt-7 w-full overflow-hidden rounded-full py-3 font-medium text-rose-50;
+
+      span {
+        @apply relative;
+      }
+
+      &:before {
+        @apply absolute bottom-full left-0 h-full w-full rounded-full transition-all duration-200;
+        content: "";
+        background-color: hsl(14, 86%, 30%);
+      }
+
+      &:hover {
+        &:before {
+          @apply bottom-0;
+        }
+      }
+    }
+  }
 }
