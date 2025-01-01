@@ -1,9 +1,46 @@
 import styles from "./DessertsSection.module.scss";
 import classNames from "classnames";
 import { IconAddToCart } from "../../assets/images";
-import { items } from "../../data/data";
+import { items } from "../../data";
+import { DessertsSectionProps } from "../../types";
 
-const DessertsSection = () => {
+const DessertsSection = ({ cart, handleSetCart }: DessertsSectionProps) => {
+  const handleAddToCart = (name: string) => {
+    handleSetCart([
+      ...cart,
+      {
+        name,
+        quantity: 1,
+      },
+    ]);
+  };
+
+  const IsItemInCart = (name: string) =>
+    cart.some((item) => item.name === name);
+
+  const itemQuantity = (name: string) => {
+    const dessert = cart.find((item) => item.name === name);
+    return dessert ? dessert.quantity : 0;
+  };
+
+  const incrementQuantity = (name: string) => {
+    handleSetCart(
+      cart.map((item) =>
+        item.name === name ? { ...item, quantity: item.quantity + 1 } : item,
+      ),
+    );
+  };
+
+  const decremenetQuantity = (name: string) => {
+    handleSetCart(
+      cart
+        .map((item) =>
+          item.name === name ? { ...item, quantity: item.quantity - 1 } : item,
+        )
+        .filter((item) => item.quantity > 0),
+    );
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.heroTitle}>Desserts</h1>
@@ -29,8 +66,9 @@ const DessertsSection = () => {
               <button
                 className={classNames({
                   [styles.addToCartBtn]: true,
-                  [styles.hide]: false,
+                  [styles.hide]: IsItemInCart(item.name),
                 })}
+                onClick={() => handleAddToCart(item.name)}
                 type="button"
               >
                 <img src={IconAddToCart} alt="icon-add-to-cart" />
@@ -39,14 +77,20 @@ const DessertsSection = () => {
               <div
                 className={classNames({
                   [styles.selected]: true,
-                  [styles.show]: false,
+                  [styles.show]: IsItemInCart(item.name),
                 })}
               >
-                <button>
+                <button
+                  type="button"
+                  onClick={() => decremenetQuantity(item.name)}
+                >
                   <i className="fa-solid fa-minus"></i>
                 </button>
-                <span>3</span>
-                <button>
+                <span>{itemQuantity(item.name)}</span>
+                <button
+                  type="button"
+                  onClick={() => incrementQuantity(item.name)}
+                >
                   <i className="fa-solid fa-plus"></i>
                 </button>
               </div>

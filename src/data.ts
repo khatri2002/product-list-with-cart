@@ -35,8 +35,8 @@ import {
   ImageWaffleMobile,
   ImageWaffleTablet,
   ImageWaffleThumbnail,
-} from "../assets/images";
-import { Items } from "./type";
+} from "./assets/images";
+import { Items } from "./types";
 
 export const items: Items = [
   {

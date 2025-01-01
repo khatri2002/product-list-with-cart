@@ -9,3 +9,13 @@ export type Items = Array<{
   category: string;
   price: number;
 }>;
+
+export type Cart = Array<{
+  name: string;
+  quantity: number;
+}>;
+
+export type DessertsSectionProps = {
+  cart: Cart;
+  handleSetCart: (cart: Cart) => void;
+};
