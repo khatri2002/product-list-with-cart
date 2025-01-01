@@ -13,9 +13,15 @@ export type Items = Array<{
 export type Cart = Array<{
   name: string;
   quantity: number;
+  price: number;
 }>;
 
 export type DessertsSectionProps = {
+  cart: Cart;
+  handleSetCart: (cart: Cart) => void;
+};
+
+export type CartSectionProps = {
   cart: Cart;
   handleSetCart: (cart: Cart) => void;
 };

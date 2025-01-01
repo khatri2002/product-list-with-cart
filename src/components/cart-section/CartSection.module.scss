@@ -5,106 +5,135 @@
     @apply sticky top-5 rounded-lg bg-white p-5;
 
     .heroTitle {
-      @apply text-red text-2xl font-semibold;
+      @apply text-red mb-6 text-2xl font-semibold;
     }
 
-    .itemsContainer {
-      @apply mt-6;
+    .wrapper {
+      @apply relative;
 
-      .item {
-        @apply relative flex items-center justify-between py-5;
+      .fillState {
+        @apply invisible opacity-0 transition duration-500;
+        .itemsContainer {
+          .item {
+            @apply relative flex items-center justify-between py-5;
 
-        .content {
-          .title {
-            @apply text-sm font-medium text-rose-900;
-          }
+            .content {
+              .title {
+                @apply text-sm font-medium text-rose-900;
+              }
 
-          .bottomTextContainer {
-            @apply mt-1 flex items-center gap-x-3 text-sm;
+              .bottomTextContainer {
+                @apply mt-1 flex items-center gap-x-3 text-sm;
 
-            .quantity {
-              @apply text-red w-7 font-semibold;
+                .quantity {
+                  @apply text-red w-7 font-semibold;
+                }
+
+                .priceSub {
+                  @apply text-rose-300;
+                }
+
+                .priceMain {
+                  @apply font-medium text-rose-500;
+                }
+              }
             }
 
-            .priceSub {
-              @apply text-rose-300;
+            .cancelBtn {
+              @apply flex h-5 w-5 items-center justify-center rounded-full border border-rose-400 transition duration-300;
+
+              i {
+                @apply text-rose-400 transition duration-300;
+                font-size: 0.7rem;
+              }
+
+              &:hover {
+                @apply border-rose-900 shadow;
+
+                i {
+                  @apply text-rose-900;
+                }
+              }
             }
 
-            .priceMain {
-              @apply font-medium text-rose-500;
+            &:first-child {
+              @apply pt-0;
+            }
+
+            &:before {
+              @apply absolute bottom-0 w-full bg-rose-100;
+              content: "";
+              height: 1px;
             }
           }
         }
 
-        .cancelBtn {
-          @apply flex h-5 w-5 items-center justify-center rounded-full border border-rose-400 transition duration-300;
+        .orderContainer {
+          @apply my-7 flex items-center justify-between;
 
-          i {
-            @apply text-rose-400 transition duration-300;
-            font-size: 0.7rem;
+          .field {
+            @apply text-sm font-medium text-rose-500;
+          }
+
+          .value {
+            @apply text-xl font-bold text-rose-900;
+          }
+        }
+
+        .badge {
+          @apply flex items-center justify-center gap-x-2 rounded-md bg-rose-50 py-3;
+
+          .text {
+            @apply text-sm text-rose-900;
+
+            .active {
+              @apply font-semibold;
+            }
+          }
+        }
+
+        .btn {
+          @apply bg-red relative mt-7 w-full overflow-hidden rounded-full py-3 font-medium text-rose-50;
+
+          span {
+            @apply relative;
+          }
+
+          &:before {
+            @apply absolute bottom-full left-0 h-full w-full rounded-full transition-all duration-200;
+            content: "";
+            background-color: hsl(14, 86%, 30%);
           }
 
           &:hover {
-            @apply border-rose-900 shadow;
-
-            i {
-              @apply text-rose-900;
+            &:before {
+              @apply bottom-0;
             }
           }
         }
+      }
 
-        &:first-child {
-          @apply pt-0;
+      .emptyState {
+        @apply visible absolute left-0 right-0 top-0 mx-auto opacity-100 transition duration-500;
+
+        img {
+          @apply mx-auto;
         }
 
-        &:before {
-          @apply absolute bottom-0 w-full bg-rose-100;
-          content: "";
-          height: 1px;
+        span {
+          @apply my-3 block text-center text-sm font-medium text-rose-500;
         }
       }
-    }
 
-    .orderContainer {
-      @apply my-7 flex items-center justify-between;
-
-      .field {
-        @apply text-sm font-medium text-rose-500;
-      }
-
-      .value {
-        @apply text-xl font-bold text-rose-900;
-      }
-    }
-
-    .badge {
-      @apply flex items-center justify-center gap-x-2 rounded-md bg-rose-50 py-3;
-
-      .text {
-        @apply text-sm text-rose-900;
-
-        .active {
-          @apply font-semibold;
+      &.active {
+        .fillState {
+          // show
+          @apply visible opacity-100;
         }
-      }
-    }
 
-    .btn {
-      @apply bg-red relative mt-7 w-full overflow-hidden rounded-full py-3 font-medium text-rose-50;
-
-      span {
-        @apply relative;
-      }
-
-      &:before {
-        @apply absolute bottom-full left-0 h-full w-full rounded-full transition-all duration-200;
-        content: "";
-        background-color: hsl(14, 86%, 30%);
-      }
-
-      &:hover {
-        &:before {
-          @apply bottom-0;
+        .emptyState {
+          // hide
+          @apply invisible opacity-0;
         }
       }
     }

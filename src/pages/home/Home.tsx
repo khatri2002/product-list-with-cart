@@ -14,7 +14,7 @@ const Home = () => {
   return (
     <main className={styles.main}>
       <DessertsSection cart={cart} handleSetCart={handleSetCart} />
-      <CartSection />
+      <CartSection cart={cart} handleSetCart={handleSetCart} />
     </main>
   );
 };
