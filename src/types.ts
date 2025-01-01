@@ -25,3 +25,7 @@ export type CartSectionProps = {
   cart: Cart;
   handleSetCart: (cart: Cart) => void;
 };
+
+export type ModalProps = {
+  open: boolean;
+};

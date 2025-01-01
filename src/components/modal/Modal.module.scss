@@ -1,0 +1,17 @@
+.container {
+  @apply fixed bottom-0 right-0 h-screen w-screen -translate-y-full overflow-hidden bg-black/50;
+
+  &.open {
+    animation: in 0.2s ease-in forwards;
+  }
+}
+
+@keyframes in {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
