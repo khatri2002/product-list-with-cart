@@ -101,10 +101,14 @@
         }
 
         .btn {
-          @apply relative mt-7 w-full overflow-hidden rounded-full bg-red py-3 font-medium text-rose-50;
+          @apply relative mt-7 w-full overflow-hidden rounded-full bg-red py-3 font-medium text-rose-50 transition duration-300;
 
           span {
-            @apply relative;
+            @apply relative right-0 transition-all duration-300;
+          }
+
+          .loadingIcon {
+            @apply invisible absolute bottom-0 right-20 top-0 my-auto h-7 w-7 opacity-0 transition duration-300;
           }
 
           &:before {
@@ -113,9 +117,21 @@
             background-color: hsl(14, 86%, 30%);
           }
 
-          &:hover {
+          &:hover:not(.loading) {
             &:before {
               @apply bottom-0;
+            }
+          }
+
+          &.loading {
+            @apply bg-red/60;
+
+            span {
+              @apply right-4;
+            }
+
+            .loadingIcon {
+              @apply visible opacity-100;
             }
           }
         }

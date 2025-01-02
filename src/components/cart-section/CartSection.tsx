@@ -1,9 +1,20 @@
 import classNames from "classnames";
-import { IconCarbonNeutral, IllustrationEmptyCart } from "../../assets/images";
+import {
+  IconCarbonNeutral,
+  IllustrationEmptyCart,
+  Loading,
+} from "../../assets/images";
 import styles from "./CartSection.module.scss";
 import { CartSectionProps } from "../../types";
+import { useState } from "react";
 
-const CartSection = ({ cart, handleSetCart }: CartSectionProps) => {
+const CartSection = ({
+  cart,
+  handleSetCart,
+  handleSetOpenModal,
+}: CartSectionProps) => {
+  const [loading, setLoading] = useState(false);
+
   const totalItems = () =>
     cart.reduce((total, item) => total + item.quantity, 0);
 
@@ -16,7 +27,17 @@ const CartSection = ({ cart, handleSetCart }: CartSectionProps) => {
     handleSetCart(cart.filter((item) => item.name !== name));
 
   const totalOrder = () =>
-    cart.reduce((total, item) => total + item.quantity * item.price, 0);
+    cart
+      .reduce((total, item) => total + item.quantity * item.price, 0)
+      .toFixed(2);
+
+  const handleConfirmOrder = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      handleSetOpenModal(true);
+    }, 2000);
+  };
 
   return (
     <div className={styles.container}>
@@ -69,8 +90,17 @@ const CartSection = ({ cart, handleSetCart }: CartSectionProps) => {
                 delivery
               </span>
             </div>
-            <button type="button" className={styles.btn}>
+            <button
+              type="button"
+              disabled={loading}
+              className={classNames({
+                [styles.btn]: true,
+                [styles.loading]: loading,
+              })}
+              onClick={handleConfirmOrder}
+            >
               <span>Confirm Order</span>
+              <img className={styles.loadingIcon} src={Loading} alt="loading" />
             </button>
           </div>
 

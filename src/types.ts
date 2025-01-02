@@ -14,6 +14,7 @@ export type Cart = Array<{
   name: string;
   quantity: number;
   price: number;
+  image: string;
 }>;
 
 export type DessertsSectionProps = {
@@ -24,8 +25,12 @@ export type DessertsSectionProps = {
 export type CartSectionProps = {
   cart: Cart;
   handleSetCart: (cart: Cart) => void;
+  handleSetOpenModal: (val: boolean) => void;
 };
 
 export type ModalProps = {
+  cart: Cart;
   open: boolean;
+  handleSetOpenModal: (val: boolean) => void;
+  handleSetCart: (cart: Cart) => void;
 };

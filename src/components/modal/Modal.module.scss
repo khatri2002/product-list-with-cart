@@ -1,17 +1,108 @@
 .container {
-  @apply fixed bottom-0 right-0 h-screen w-screen -translate-y-full overflow-hidden bg-black/50;
+  @apply fixed bottom-0 right-0 flex h-screen w-screen -translate-y-full items-center justify-center overflow-hidden bg-black/50 transition-transform duration-300;
+
+  .box {
+    @apply invisible translate-y-10 rounded-lg bg-white p-6 opacity-0 transition-all delay-500 duration-300;
+    width: 35%;
+
+    .confirmIcon {
+      @apply w-10;
+    }
+
+    .title {
+      @apply mt-4 text-3xl font-bold text-rose-900;
+    }
+
+    .desc {
+      @apply block text-rose-500;
+    }
+
+    .innerBox {
+      @apply mt-5 rounded-md bg-rose-50 p-4;
+
+      .itemsContainer {
+        .item {
+          @apply relative flex items-center gap-x-4 py-4;
+
+          .itemImage {
+            @apply h-11 w-11 rounded object-cover;
+          }
+
+          .infoContainer {
+            @apply flex-grow text-sm;
+
+            .name {
+              @apply font-semibold text-rose-900;
+            }
+
+            .quantityPrice {
+              @apply mt-1;
+
+              .quantity {
+                @apply font-semibold text-red;
+              }
+
+              .price {
+                @apply ml-4 text-rose-400;
+              }
+            }
+          }
+
+          .priceMain {
+            @apply text-sm font-semibold;
+          }
+
+          &:before {
+            @apply absolute bottom-0 w-full bg-rose-100;
+            content: "";
+            height: 1px;
+          }
+
+          &:first-child {
+            @apply pt-0;
+          }
+        }
+      }
+
+      .orderContainer {
+        @apply mt-4 flex items-center justify-between text-rose-900;
+
+        .field {
+          @apply text-sm;
+        }
+
+        .value {
+          @apply text-xl font-bold;
+        }
+      }
+    }
+
+    .btn {
+      @apply relative mt-6 w-full overflow-hidden rounded-full bg-red py-3 text-white outline outline-offset-2 outline-transparent transition-all duration-200 focus:translate-y-2 focus:outline-red;
+
+      span {
+        @apply relative;
+      }
+
+      &:before {
+        content: "";
+        @apply absolute bottom-full left-0 h-full w-full rounded-full transition-all duration-200;
+        background-color: hsl(14, 86%, 30%);
+      }
+
+      &:hover {
+        &:before {
+          @apply bottom-0;
+        }
+      }
+    }
+  }
 
   &.open {
-    animation: in 0.2s ease-in forwards;
-  }
-}
+    @apply translate-y-0;
 
-@keyframes in {
-  from {
-    transform: translateY(-100%);
-  }
-
-  to {
-    transform: translateY(0);
+    .box {
+      @apply visible translate-y-0 opacity-100;
+    }
   }
 }

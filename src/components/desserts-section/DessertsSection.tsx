@@ -5,12 +5,13 @@ import { items } from "../../data";
 import { DessertsSectionProps } from "../../types";
 
 const DessertsSection = ({ cart, handleSetCart }: DessertsSectionProps) => {
-  const handleAddToCart = (name: string, price: number) => {
+  const handleAddToCart = (name: string, price: number, image: string) => {
     handleSetCart([
       ...cart,
       {
         name,
         price,
+        image,
         quantity: 1,
       },
     ]);
@@ -74,7 +75,9 @@ const DessertsSection = ({ cart, handleSetCart }: DessertsSectionProps) => {
               </div>
               <button
                 className={styles.addToCartBtn}
-                onClick={() => handleAddToCart(item.name, item.price)}
+                onClick={() =>
+                  handleAddToCart(item.name, item.price, item.image.thumbnail)
+                }
                 type="button"
               >
                 <img src={IconAddToCart} alt="icon-add-to-cart" />

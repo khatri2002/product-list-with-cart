@@ -1,6 +1,8 @@
 import IconAddToCart from "./icon-add-to-cart.svg";
 import IconCarbonNeutral from "./icon-carbon-neutral.svg";
 import IllustrationEmptyCart from "./illustration-empty-cart.svg";
+import Loading from "./loading.svg";
+import IconOrderConfirmed from "./icon-order-confirmed.svg";
 
 import ImageWaffleDesktop from "./image-waffle-desktop.jpg";
 import ImageWaffleMobile from "./image-waffle-mobile.jpg";
@@ -51,6 +53,8 @@ export {
   IconAddToCart,
   IconCarbonNeutral,
   IllustrationEmptyCart,
+  Loading,
+  IconOrderConfirmed,
   ImageWaffleDesktop,
   ImageWaffleMobile,
   ImageWaffleTablet,
