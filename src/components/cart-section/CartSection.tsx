@@ -5,14 +5,11 @@ import {
   Loading,
 } from "../../assets/images";
 import styles from "./CartSection.module.scss";
-import { CartSectionProps } from "../../types";
 import { useState } from "react";
+import { UseDataContext } from "../../DataProvider";
 
-const CartSection = ({
-  cart,
-  handleSetCart,
-  handleSetOpenModal,
-}: CartSectionProps) => {
+const CartSection = () => {
+  const { cart, handleSetCart, handleSetOpenModal } = UseDataContext();
   const [loading, setLoading] = useState(false);
 
   const totalItems = () =>

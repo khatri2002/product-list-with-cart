@@ -1,10 +1,14 @@
-import styles from "./DessertsSection.module.scss";
 import classNames from "classnames";
-import { IconAddToCart } from "../../assets/images";
-import { items } from "../../data";
-import { DessertsSectionProps } from "../../types";
 
-const DessertsSection = ({ cart, handleSetCart }: DessertsSectionProps) => {
+import { UseDataContext } from "../../DataProvider";
+import { items } from "../../data";
+
+import { IconAddToCart } from "../../assets/images";
+import styles from "./DessertsSection.module.scss";
+
+const DessertsSection = () => {
+  const { cart, handleSetCart } = UseDataContext();
+
   const handleAddToCart = (name: string, price: number, image: string) => {
     handleSetCart([
       ...cart,

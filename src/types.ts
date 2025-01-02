@@ -17,20 +17,13 @@ export type Cart = Array<{
   image: string;
 }>;
 
-export type DessertsSectionProps = {
-  cart: Cart;
-  handleSetCart: (cart: Cart) => void;
+export type AuthProviderProps = {
+  children: React.ReactNode;
 };
 
-export type CartSectionProps = {
+export type DataContextValue = {
   cart: Cart;
+  openModal: boolean;
   handleSetCart: (cart: Cart) => void;
   handleSetOpenModal: (val: boolean) => void;
-};
-
-export type ModalProps = {
-  cart: Cart;
-  open: boolean;
-  handleSetOpenModal: (val: boolean) => void;
-  handleSetCart: (cart: Cart) => void;
 };

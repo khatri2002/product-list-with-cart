@@ -1,22 +1,17 @@
 import classNames from "classnames";
-import { ModalProps } from "../../types";
 import styles from "./Modal.module.scss";
 import { useEffect } from "react";
-import {
-  IconOrderConfirmed,
-  ImageTiramisuThumbnail,
-} from "../../assets/images";
+import { IconOrderConfirmed } from "../../assets/images";
+import { UseDataContext } from "../../DataProvider";
 
-const Modal = ({
-  open,
-  handleSetOpenModal,
-  handleSetCart,
-  cart,
-}: ModalProps) => {
+const Modal = () => {
+  const { openModal, handleSetOpenModal, handleSetCart, cart } =
+    UseDataContext();
+
   useEffect(() => {
-    if (open) document.body.style.overflow = "hidden";
+    if (openModal) document.body.style.overflow = "hidden";
     else document.body.style.overflow = "auto";
-  }, [open]);
+  }, [openModal]);
 
   const handleStartNewOrder = () => {
     handleSetCart([]);
@@ -33,7 +28,10 @@ const Modal = ({
 
   return (
     <div
-      className={classNames({ [styles.container]: true, [styles.open]: open })}
+      className={classNames({
+        [styles.container]: true,
+        [styles.open]: openModal,
+      })}
     >
       <div className={styles.box}>
         <img
