@@ -1,11 +1,19 @@
+@import "../../breakpoints.scss";
+
 .container {
   width: 30%;
+  @media (width < $lg) {
+    width: 40%;
+  }
+  @media (width < $sm) {
+    width: 100%;
+  }
 
   .box {
-    @apply sticky top-5 rounded-lg bg-white p-5;
+    @apply sticky top-5 rounded-lg bg-white p-3 md:p-4 xl:p-5;
 
     .heroTitle {
-      @apply mb-6 text-2xl font-semibold text-red;
+      @apply mb-6 text-xl font-semibold text-red lg:text-2xl;
     }
 
     .wrapper {
@@ -19,7 +27,7 @@
             @apply overflow-hidden;
 
             .item {
-              @apply relative flex items-center justify-between overflow-hidden py-5;
+              @apply relative flex items-center justify-between overflow-hidden py-4 lg:py-5;
               animation: in 0.4s cubic-bezier(0.01, 0.96, 0.61, 0.88);
 
               .content {
@@ -45,11 +53,14 @@
               }
 
               .cancelBtn {
-                @apply flex h-5 w-5 items-center justify-center rounded-full border border-rose-400 transition duration-300;
+                @apply flex h-4 w-4 items-center justify-center rounded-full border border-rose-400 transition duration-300 md:h-5 md:w-5;
 
                 i {
                   @apply text-rose-400 transition duration-300;
                   font-size: 0.7rem;
+                  @media (width < $md) {
+                    font-size: 0.5rem;
+                  }
                 }
 
                 &:hover {
@@ -92,7 +103,7 @@
           @apply flex items-center justify-center gap-x-2 rounded-md bg-rose-50 py-3;
 
           .text {
-            @apply text-sm text-rose-900;
+            @apply text-xs text-rose-900 md:text-sm;
 
             .active {
               @apply font-semibold;
@@ -101,14 +112,15 @@
         }
 
         .btn {
-          @apply relative mt-7 w-full overflow-hidden rounded-full bg-red py-3 font-medium text-rose-50 transition duration-300;
+          @apply relative mt-7 w-full overflow-hidden rounded-full bg-red py-2 font-medium text-rose-50 transition duration-300 md:py-3;
 
           span {
             @apply relative right-0 transition-all duration-300;
           }
 
           .loadingIcon {
-            @apply invisible absolute bottom-0 right-20 top-0 my-auto h-7 w-7 opacity-0 transition duration-300;
+            @apply invisible absolute bottom-0 top-0 my-auto h-7 w-7 opacity-0 transition duration-300;
+            right: 15%;
           }
 
           &:before {

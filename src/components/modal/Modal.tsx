@@ -1,8 +1,10 @@
-import classNames from "classnames";
-import styles from "./Modal.module.scss";
 import { useEffect } from "react";
-import { IconOrderConfirmed } from "../../assets/images";
+
+import classNames from "classnames";
+
 import { UseDataContext } from "../../DataProvider";
+import { IconOrderConfirmed } from "../../assets/images";
+import styles from "./Modal.module.scss";
 
 const Modal = () => {
   const { openModal, handleSetOpenModal, handleSetCart, cart } =

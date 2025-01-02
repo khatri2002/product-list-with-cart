@@ -1,12 +1,14 @@
+import { useState } from "react";
+
 import classNames from "classnames";
+
+import { UseDataContext } from "../../DataProvider";
 import {
   IconCarbonNeutral,
   IllustrationEmptyCart,
   Loading,
 } from "../../assets/images";
 import styles from "./CartSection.module.scss";
-import { useState } from "react";
-import { UseDataContext } from "../../DataProvider";
 
 const CartSection = () => {
   const { cart, handleSetCart, handleSetOpenModal } = UseDataContext();

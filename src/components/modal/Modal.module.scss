@@ -1,20 +1,25 @@
+@import "../../breakpoints.scss";
+
 .container {
-  @apply fixed bottom-0 right-0 flex h-screen w-screen -translate-y-full items-center justify-center overflow-hidden bg-black/50 transition-transform duration-300;
+  @apply fixed bottom-0 right-0 flex h-screen w-screen -translate-y-full items-end justify-center overflow-hidden bg-black/50 transition-transform duration-300 sm:items-center;
 
   .box {
-    @apply invisible translate-y-10 rounded-lg bg-white p-6 opacity-0 transition-all delay-500 duration-300;
-    width: 35%;
+    @apply invisible max-h-screen translate-y-10 overflow-auto rounded-lg bg-white p-6 opacity-0 transition-all delay-500 duration-300;
+    width: 32rem;
+    @media (width < $sm) {
+      width: 100%;
+    }
 
     .confirmIcon {
-      @apply w-10;
+      @apply w-9 lg:w-10;
     }
 
     .title {
-      @apply mt-4 text-3xl font-bold text-rose-900;
+      @apply mt-3 text-2xl font-bold text-rose-900 lg:mt-4 lg:text-3xl;
     }
 
     .desc {
-      @apply block text-rose-500;
+      @apply block text-sm text-rose-500 lg:text-base;
     }
 
     .innerBox {
@@ -78,7 +83,7 @@
     }
 
     .btn {
-      @apply relative mt-6 w-full overflow-hidden rounded-full bg-red py-3 text-white outline outline-offset-2 outline-transparent transition-all duration-200 focus:translate-y-2 focus:outline-red;
+      @apply relative mt-6 w-full overflow-hidden rounded-full bg-red py-2 text-white outline outline-offset-2 outline-transparent transition-all duration-200 focus:translate-y-2 focus:outline-red lg:py-3;
 
       span {
         @apply relative;
